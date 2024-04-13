@@ -1,0 +1,115 @@
+/* Counter 1 ---------------------------------- */
+.counter-area-3 {
+    padding: 80px 65px;
+    background-size: auto;
+    background-repeat: repeat;
+}
+.counter-card {
+    text-align: center;
+    height: 280px;
+    width: 280px;
+    border-radius: 50%;
+    border: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    &_icon {
+        background: $theme-color2;
+        color: $black-color2;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    &_number {
+        font-size: 80px;
+        color: transparent;
+        font-weight: 700;
+        -webkit-text-stroke: 1px $white-color;
+        margin-bottom: -2px;
+        margin-top: -0.15em;
+        transition: 0.4s;
+    }
+    &_text {
+        font-weight: 500;
+        font-size: 18px;
+        color: $body-color;
+        display: block;
+        margin-bottom: -0.4em;
+    }
+    &_bg {
+        position: absolute;
+        left: 50%;
+        top: 73px;
+        transform: translate(-50%, 0);
+        background-clip: text;
+        background-size: cover;
+        background-position: center;
+        -webkit-text-stroke: 1px transparent;
+        opacity: 0;
+        transition: 0.4s;
+    }
+    &:hover {
+        .counter-card_bg {
+            opacity: 1;
+        }
+    }
+}
+.counter-card2 {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    .counter-card_number {
+        margin-bottom: -0.3em;
+    }
+    .counter-card_text {
+        max-width: 90px;
+    }
+    &:hover {
+        .counter-card_number {
+            color: $white-color;
+        }
+    }
+}
+@include ml {
+    .counter-card {
+        height: 250px;
+        width: 250px;
+    }
+    .counter-card_number {
+        font-size: 60px;
+    }
+}
+@include lg {
+    .counter-card {
+        height: 210px;
+        width: 210px;
+    }
+    .counter-card_number {
+        font-size: 50px;
+    }
+    .counter-card_text {
+        font-size: 16px;
+    }
+    .counter-card_icon {
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+    }
+    .counter-area-3 {
+        padding: 70px 47px;
+    }
+}
+@include md {
+    .counter-area-3 {
+        padding: 60px 80px;
+    }
+}
+@include xs {
+    .counter-card2 {
+        justify-content: center;
+    }
+}

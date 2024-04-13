@@ -1,0 +1,42 @@
+/* Brand 1 ---------------------------------- */
+.brand-sec1 {
+    position: relative;
+    z-index: 4;
+    border-radius: 10px;
+    max-width: 1420px;
+    margin-left: auto;
+    margin-right: auto;
+    &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: $title-color;
+        border-radius: inherit;
+        clip-path: polygon(0 0, 100% 0, 100% 11px, calc(100% - 70px) 50%, 100% calc(100% - 11px), 100% 100%, 0 100%, 0 calc(100% - 11px), 70px 50%, 0 11px);
+        z-index: -1;
+        @include xxl {
+            clip-path: polygon(0 0, 100% 0, 100% 11px, calc(100% - 40px) 50%, 100% calc(100% - 11px), 100% 100%, 0 100%, 0 calc(100% - 11px), 40px 50%, 0 11px);
+        }
+        @include xl {
+            clip-path: polygon(0 0, 100% 0, 100% 11px, calc(100% - 30px) 50%, 100% calc(100% - 11px), 100% 100%, 0 100%, 0 calc(100% - 11px), 30px 50%, 0 11px);
+        }
+    }
+    @include sm {
+        margin-left: 12px;
+        margin-right: 12px;
+        &:after {
+            clip-path: none;
+        }
+    }
+    .slick-arrow {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@include sm {
+    .brand-box.py-20 {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

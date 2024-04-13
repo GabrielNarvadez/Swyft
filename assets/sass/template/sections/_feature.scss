@@ -1,0 +1,36 @@
+/* Feature Card ---------------------------------- */ 
+.feature-area-1 {
+    padding: 0 10px;
+    background-size: contain;
+    background-repeat: repeat;
+}
+.feature-area-2 {
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+}
+.feature-item {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    gap: 10px;
+    .box-title {
+        margin: 0 0 -0.3em;
+        a {
+            &:hover {
+                color: $theme-color2;
+            }
+        }
+    }
+}
+@media (max-width: 1600px) {
+    .feature-item .box-title {
+        font-size: 20px;
+    }
+}
+@include xs {
+    .feature-item {
+        padding: 30px 0;
+    }
+}

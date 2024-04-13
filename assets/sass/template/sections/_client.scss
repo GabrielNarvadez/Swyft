@@ -1,0 +1,57 @@
+.client-title {
+    color: $body-color;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        background: $border-color;
+        height: 1px;
+        width: 300px;
+        transform: translate(calc(-100% - 30px), -50%);
+    }
+    &:before {
+        left: auto;
+        right: 0;
+        transform: translate(calc(100% + 30px), -50%);
+    }
+}
+.client-card {
+    text-align: center;
+    .client-img {
+        img {
+            transition: 0.4s;
+            filter: brightness(99);
+            opacity: 0.4;
+        }
+        &:hover img {
+            opacity: 1;
+        }
+    }
+}
+@include lg {
+    .client-title:before, .client-title:after {
+        width: 190px;
+    }
+}
+@include md {
+    .client-title:before, .client-title:after {
+        width: 60px;
+    }
+    .client-title:before, .client-title:after {
+        transform: translate(calc(-100% - 10px), -50%);
+    }
+    .client-title:before {
+        transform: translate(calc(100% + 10px), -50%);
+    }
+}
+@include sm {
+    .client-title:after,
+    .client-title:before {
+        display: none;
+    }
+}

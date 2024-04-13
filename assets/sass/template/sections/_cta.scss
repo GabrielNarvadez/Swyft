@@ -1,0 +1,80 @@
+.cta-area-1 {
+    padding: 85px 0px;
+    border-bottom: 1px solid $border-color;
+    .sec-title {
+        font-size: 50px;
+        margin-top: 0;
+    }
+    .title-area {
+        margin-top: 0;
+    }
+}
+.cta-area-2 {
+    position: relative;
+    padding: 180px 0;
+}
+.cta-bg-thumb {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    mix-blend-mode: luminosity;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+.cta-btn {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 40px 0;
+    line-height: 24px;
+    i {
+        display: block;
+        font-size: 24px;
+        margin-top: 10px;
+    }
+    &:before,
+    &:after {
+        display: none;
+    }
+    &:hover {
+        background: $white-color;
+        color: $black-color2;
+    }
+}
+@include xxl {
+    .cta-area-2 {
+        padding: 150px 0;
+    }
+}
+@include ml {
+    .cta-area-2 {
+        padding: 120px 0;
+    }
+}
+@include lg {
+    .cta-area-1 {
+        padding: 50px 0px;
+        .sec-title {
+            font-size: 40px;
+        }
+    }
+    .cta-area-2 {
+        padding: 100px 0;
+        .cta-bg-thumb img {
+            object-fit: cover;
+        }
+    }
+}
+@include sm {
+    .cta-area-1 .sec-title {
+        font-size: 32px;
+    }
+}

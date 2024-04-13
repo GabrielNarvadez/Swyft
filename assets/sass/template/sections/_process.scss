@@ -1,0 +1,114 @@
+.process-card {
+    position: relative;
+    text-align: center;
+    padding: 0 30px;
+    &-area {
+        position: relative;
+        .process-line {
+            position: absolute;
+            left: 0;
+            top: 130px;
+            width: 100%;
+            transform: translate(0, 0);
+            height: 1px;
+            background: $border-color;
+        }
+    }   
+    &_icon {
+        display: inline-block;
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 12px;
+            height: 10px;
+            transition: 0.4s;
+            border-top: solid 10px $border-color;
+            border-left: solid 10px transparent;
+            border-right: solid 10px transparent;
+            transform: translate(-50%, 0);
+        }  
+    }
+    .box-title {
+        font-weight: 700;
+        margin-bottom: 8px;
+        font-size: 22px;
+        transition: 0.4s;
+    }
+    &_number {
+        text-align: center;
+        z-index: 2;
+        font-size: 80px;
+        font-weight: 700;
+        -webkit-text-stroke: 1px $border-color;
+        margin-bottom: 36px;
+        transition: 0.4s;
+        color: transparent;
+    }
+    &_text {
+        margin-bottom: -0.35em;
+        font-size: 16px;
+        transition: 0.4s;
+    }
+    &:hover {
+        &:after {
+            border-top: solid 10px $theme-color;
+        }
+        .process-card_number {
+            color: $white-color;
+        }
+        .process-card_icon:after {
+            border-top: solid 10px $theme-color;
+        }
+    }
+}
+@include ml {
+    .process-card-area .process-line {
+        width: 100%;
+    }
+}
+@include lg {
+    .process-card {
+        padding: 0 0px;
+    }
+    .process-card_text {
+        font-size: 14px;
+    }
+    .process-card_number {
+        font-size: 50px;
+        margin-bottom: 26px;
+    }
+}
+@include md {
+    .process-card-area .process-line {
+        display: none;
+    }
+    .process-card:after {
+        display: none;
+    }
+    .process-card_step-number {
+        margin-bottom: 30px;
+    }
+    .process-card {
+        padding: 0 40px;
+    }
+    .process-card_icon {
+        border-bottom: 1px solid $border-color;
+        display: block;
+        margin-bottom: 43px;
+        &:after {
+            bottom: -10px;
+        }
+    }
+}
+@include sm {
+    .process-card_text {
+        max-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

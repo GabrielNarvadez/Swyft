@@ -1,0 +1,48 @@
+.award-sec {
+    padding-top: 420px;
+}
+.award-thumb {
+    position: relative;
+    margin-right: 50px;
+    .thumb {
+        img {
+            border-radius: 50%;
+        }
+    }
+    .award {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+@media (max-width: 1200px) {
+    .award-thumb {
+        margin-right: 0;
+    }
+}
+@include lg {
+    .award-sec {
+        padding-top: 380px;
+        background-position: right;
+    }
+    .award-thumb {
+        display: inline-block;
+        padding-right: 100px;
+        .award {
+            right: 0;
+            top: 50%;
+            transform: translate(0%, -50%);
+            width: 200px;
+        }
+    }
+}
+@include md {
+    .award-thumb {
+        margin-bottom: 40px;
+    }
+}
+@include vxs {
+    .award-thumb .award {
+        width: 150px;
+    }
+}

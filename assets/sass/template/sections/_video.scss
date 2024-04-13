@@ -1,0 +1,70 @@
+.video-area-1 {
+    padding: 265px 0;
+    background-attachment: fixed;
+    .play-btn > i {
+        --icon-size: 120px
+    }
+}
+@include xl {
+    .video-area-1 {
+        padding: 180px 0;
+    }
+}
+@include sm {
+    .video-area-1 {
+        padding: 120px 0;
+    }
+}
+@include xs {
+    .video-area-1 .play-btn > i {
+        --icon-size: 80px;
+    }
+}
+.video-area-2 {
+    padding: 340px 0;
+    position: relative;
+    .play-btn > i {
+        --icon-size: 120px
+    }
+    .video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+    }
+}
+.video-box2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 30px;
+    .video-title {
+        margin-bottom: -0.3em;
+
+    }
+    .play-btn > i {
+        --icon-size: 120px;
+    }
+}
+@include hd {
+    .video-area-2 {
+        padding: 470px 0;
+    }
+}
+@include ml {
+    .video-area-2 {
+        padding: 250px 0;
+    }
+}
+@include md {
+    .video-box2 .play-btn > i {
+        --icon-size: 90px;
+    }
+    .video-area-2 {
+        padding: 110px 0;
+    }
+    .video-area-2 .play-btn > i {
+        --icon-size: 100px;
+    }
+}

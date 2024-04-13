@@ -1,0 +1,129 @@
+/* Why 1 ---------------------------------- */ 
+.wcu-wrap {
+    display: flex;
+    gap: 30px;
+    max-width: 480px;
+    &:not(:last-child) {
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        transition: 0.4s;
+        border-bottom: 1px solid #16161A;
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: $theme-color;
+            transition: 0.4s;
+        }
+    }
+    &_icon {
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        background: transparent;
+        border: 1px solid $border-color;
+        border-radius: 50%;
+        color: $white-color;
+        text-align: center;
+        font-size: 18px;
+        flex: none;
+        transition: 0.4s;
+    }
+    .box-title {
+        margin-bottom: 12px;
+    }
+    &_text {
+        color: $gray-color;
+        margin-bottom: -0.4em;
+    }
+    .link-btn {
+        display: inline-block;
+        margin-bottom: -0.4em;
+        margin-top: 30px;
+        color: $title-color;
+        i {
+            color: $theme-color;
+        }
+    }
+    &:hover {
+        .wcu-wrap_icon {
+            background: $theme-color;
+            border-color: $theme-color;
+        }
+        
+        &:not(:last-child) {
+            &:after {
+                width: 100%;
+            }
+        }
+        .link-btn {
+            color: $theme-color;
+        }
+    }
+}
+@include ml {
+    .wcu-wrap_text {
+        font-size: 14px;
+    }
+}
+@include xl {
+    .wcu-wrap .box-title {
+        font-size: 20px;
+    }
+}
+@include lg {
+    .wcu-wrap2 {
+        .wcu-wrap {
+            max-width: none;
+        }
+    }
+    .wcu-wrap_text {
+        font-size: 16px;
+    }
+}
+.wcu-grid {
+    $service-list-border: 3;
+    $service-twocolumn: 2;
+    --space-x: 30px;
+    --space-y: 30px;
+    // Reset All
+    &:not(:nth-child(#{$service-list-border}n)) {
+        border-right: unset;
+    }
+    // For 2 Column
+    &:not(:nth-last-child(-n + #{$service-twocolumn})) {
+        padding-bottom: var(--space-y);
+    }
+    &:not(:nth-child(-n + #{$service-twocolumn})) {
+        padding-top: var(--space-y);    
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    &:nth-child(odd) {
+        padding-right: var(--space-x);
+    }
+    &:nth-child(even) {
+        padding-left: var(--space-x);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    &:not(:nth-last-child(-n + 4)) {
+        border-top: 0;
+    }
+}
+@include sm {
+    .wcu-grid:nth-child(even) {
+        padding-left: 12px;
+        border-left: 0;
+    }
+    .wcu-grid:not(:nth-child(-n + 2)) {
+        border-top: 0;
+    }
+    .wcu-grid:nth-child(odd) {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 0;
+    }
+}
