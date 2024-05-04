@@ -37,6 +37,47 @@ public class EventsService {
         }
         return resp;
     }
+    public EventsDTO updateEvent(EventsDTO eventRequest) {
+        EventsDTO resp = new EventsDTO();
+        try {
+            // Retrieve the existing event from the database using the provided eventId
+            Optional<Events> optionalEvents = eventsRepository.findById(eventRequest.getId());
+            if (optionalEvents.isPresent()) {
+                Events events = optionalEvents.get();
+
+                // Update the fields of the existing event with the values from the request
+                events.setTitle(eventRequest.getTitle());
+                events.setDate(eventRequest.getDate());
+                events.setDetails(eventRequest.getDetails());
+                events.setLocation(eventRequest.getLocation());
+
+                // Save the updated event
+                Events eventsSaved = eventsRepository.save(events);
+
+                // Set the updated event in the response
+                resp.setEvent(eventsSaved);
+                resp.setMessage("Successfully Updated");
+            } else {
+                resp.setStatusCode(404);
+                resp.setMessage("Event not found");
+            }
+        } catch (Exception e) {
+            resp.setStatusCode(500);
+            resp.setError(e.getMessage());
+        }
+        return resp;
+    }
+    public EventsDTO deleteEvent(int eventId) {
+        EventsDTO resp = new EventsDTO();
+        try {
+            eventsRepository.deleteById(eventId);
+            resp.setMessage("Successfully Deleted");
+        } catch (Exception e) {
+            resp.setStatusCode(500);
+            resp.setError(e.getMessage());
+        }
+        return resp;
+    }
 }
 
 

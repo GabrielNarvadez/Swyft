@@ -1,13 +1,19 @@
 package com.Swyft.DTO;
 
 import com.Swyft.Entity.Events;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EventsDTO {
 
     // Fields representing event data
+    private Integer id; // Added ID field
+
     @NotEmpty(message = "Event title required")
     private String title;
 
@@ -30,6 +36,19 @@ public class EventsDTO {
 
     // Constructor to set the event object
     public EventsDTO() {
+    }
+
+    // Getter and Setter for ID
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    // Setter for Events
+    public void setEvent(Events event) {
         this.event = event;
     }
 }

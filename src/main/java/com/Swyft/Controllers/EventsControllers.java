@@ -26,12 +26,19 @@ public class EventsControllers {
         this.eventsService = eventsService;
     }
 
-    @PostMapping("/events")
+    @PostMapping("/create")
     public ResponseEntity<EventsDTO> createEvent(@RequestBody EventsDTO create){
         return ResponseEntity.ok(eventsService.createEvent(create)); //NAME OF HTML FILE TO BE RETURNED HERE
     }
+    @PutMapping("/update/{eventId}")
+    public ResponseEntity<EventsDTO> updateEvent(@PathVariable int eventId, @Valid @RequestBody EventsDTO update) {
+        update.setId(eventId);
+        return ResponseEntity.ok(eventsService.updateEvent(update)); //NAME OF HTML FILE TO BE RETURNED HERE
+    }
 
-
-
+    @DeleteMapping("/delete/{eventId}")
+    public ResponseEntity<EventsDTO> deleteEvent(@PathVariable int eventId) {
+        return ResponseEntity.ok(eventsService.deleteEvent(eventId)); //NAME OF HTML FILE TO BE RETURNED HERE
+    }
 
 }
