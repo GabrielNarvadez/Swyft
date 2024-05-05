@@ -12,10 +12,10 @@ import lombok.Data;
 public class EventsDTO {
 
     // Fields representing event data
-    private Integer id; // Added ID field
+    private Integer event_id; // Added ID field
 
     @NotEmpty(message = "Event title required")
-    private String title;
+    private String event_title;
 
     @NotEmpty(message = "Event location required")
     private String location;
@@ -40,15 +40,19 @@ public class EventsDTO {
 
     // Getter and Setter for ID
     public Integer getId() {
-        return id;
+        return event_id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.event_id = event_id;
     }
 
     // Setter for Events
     public void setEvent(Events event) {
         this.event = event;
+    }
+
+    public String getTitle() {
+        return event_title;
     }
 }

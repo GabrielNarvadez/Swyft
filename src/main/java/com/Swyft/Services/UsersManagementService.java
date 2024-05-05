@@ -23,7 +23,6 @@ public class UsersManagementService {
     private UserRepository userRepository;
     @Autowired
     private JWTUtils jwtUtils;
-    @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private PasswordEncoder passwordEncoder;

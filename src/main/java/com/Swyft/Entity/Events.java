@@ -15,7 +15,7 @@ public class Events {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int event_id;
 
-    private String title;
+    private String event_title;
     private String date;
     private String location;
     private String details;
@@ -23,7 +23,7 @@ public class Events {
     @Column(columnDefinition = "TEXT")
 
     public String getTitle() {
-        return title;
+        return event_title;
     }
 
     public String getDate() {
@@ -34,8 +34,8 @@ public class Events {
         this.date = date;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String event_title) {
+        this.event_title = event_title;
     }
 
     public String getLocation() {
