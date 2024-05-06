@@ -1,0 +1,85 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    {% include 'personal/snippets/header.html' %}
+</head>
+
+<body class="dark-theme" data-bg-src="../static/assets/img/bg/dark-bg.png">
+
+    <!--[if lte IE 9]>
+    	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+
+
+    <!--********************************
+   		Code Start From Here 
+	******************************** -->
+
+
+    {% include 'personal/snippets/nav.html' %}
+
+    <!--==============================
+    Breadcumb
+============================== -->
+    <div class="breadcumb-wrapper " data-bg-src="../static/assets/img/bg/breadcumb-bg.jpg" data-overlay="black" data-opacity="8">
+        <div class="container">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title">Event Delete</h1>
+                <ul class="breadcumb-menu">
+                    <li><a href="index">Home</a></li>
+                    <li>Event Delete</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--==============================
+Contact Area  
+==============================-->
+    <div class="space">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 pe-xxl-5 mb-30 mb-lg-0">
+                    <div class="title-area mb-25 text-lg-start text-center">
+                        <h2 class="sec-title">Are you certain you want to cancel the event<br>
+                    </div>
+                    <p class="mt-n2 text-lg-start text-center">8502 Preston Rd. Inglewood, Maine 98380</p>
+                    <a href="mailto:needhelp.agenxe@gmail.com" class="contact-mail mb-25">info@swyft.io</a>
+                    <a href="tel:+12345685068" class="contact-number mb-30">+123 (456) 859 68</a>
+                    <div class="map-sec">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.7310056272386!2d89.2286059153658!3d24.00527418490799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fe9b97badc6151%3A0x30b048c9fb2129bc!2sthemeholy!5e0!3m2!1sen!2sbd!4v1651028958211!5m2!1sen!2sbd" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-xl-4">
+                    <form action="mail.php" method="POST" class="th-contact-form ajax-contact" data-bg-src="../static/assets/img/bg/feature-bg1.png">
+                        <div class="form-title">
+                            <h3 class="page-subtitle h4 mb-30 mt-n1">Message with me</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 form-group">
+                                <input type="text" placeholder="Full Name" class="form-control style2">
+                            </div>
+                            <div class="col-xl-6 form-group">
+                                <input type="text" placeholder="Email Address" class="form-control style2">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <input type="text" placeholder="Subject" class="form-control style2">
+                            </div>
+                            <div class="col-12 form-group">
+                                <textarea placeholder="Massage" class="form-control style2"></textarea>
+                            </div>
+                            <div class="col-12 form-group mb-0">
+                                <button class="th-btn">Delete <i class="fas fa-arrow-right ms-2"></i></button>
+                                <button class="th-btn">Cancel <i class="fas fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    {% include 'personal/snippets/footer.html' %}
+
+</body>
+
+</html>

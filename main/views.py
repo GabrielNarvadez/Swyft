@@ -19,3 +19,9 @@ def event_details(request):
 
 def faq(request):
     return render(request, 'faq.html')
+
+def event_delete(request):
+    return render(request, 'event-delete.html')
+
+def login(request):
+    return render(request, 'login.html')
