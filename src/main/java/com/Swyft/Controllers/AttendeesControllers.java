@@ -1,11 +1,7 @@
 package com.Swyft.Controllers;
 
-
 import com.Swyft.DTO.AttendeesDTO;
-import com.Swyft.DTO.EventsDTO;
 import com.Swyft.Services.AttendeesService;
-import com.Swyft.Services.EventsService;
-import com.Swyft.Services.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +15,15 @@ public class AttendeesControllers {
         this.attendeesService = attendeesService;
     }
 
-    @PostMapping("attendees/create")
-    public ResponseEntity<AttendeesDTO> createAttendees(@RequestBody AttendeesDTO create) {
-        return ResponseEntity.ok(attendeesService.createAttendees(create)); //NAME OF HTML FILE TO BE RETURNED HERE
+    @PostMapping("/attendees/create/{eventId}")
+    public ResponseEntity<AttendeesDTO> createAttendees(@RequestBody AttendeesDTO create, @PathVariable int eventId) {
+        AttendeesDTO result = attendeesService.createAttendees(create, eventId);
+        return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping("attendees/delete/{attendeesId}")
+    @DeleteMapping("/attendees/delete/{attendeesId}")
     public ResponseEntity<AttendeesDTO> deleteAttendees(@PathVariable int attendeesId) {
-        return ResponseEntity.ok(attendeesService.deleteAttendees(attendeesId)); //NAME OF HTML FILE TO BE RETURNED HERE
+        AttendeesDTO result = attendeesService.deleteAttendees(attendeesId);
+        return ResponseEntity.ok(result);
     }
 }

@@ -6,13 +6,14 @@ import com.Swyft.Repositories.EventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EventsService {
     @Autowired
     private EventsRepository eventsRepository;
-
 
     public EventsDTO createEvent(EventsDTO eventRequest) {
         EventsDTO resp = new EventsDTO();
@@ -27,34 +28,30 @@ public class EventsService {
             Events eventsSaved = eventsRepository.save(events);
 
             if (eventsSaved.getTitle().equals(eventRequest.getTitle())) {
-                resp.setEvent(eventsSaved); // Assuming you have a setter for event in EventsDTO
+                resp.setEvent(eventsSaved);
                 resp.setMessage("Successfully Saved");
             }
         } catch (Exception e) {
             resp.setStatusCode(500);
             resp.setError(e.getMessage());
-
         }
         return resp;
     }
+
     public EventsDTO updateEvent(EventsDTO eventRequest) {
         EventsDTO resp = new EventsDTO();
         try {
-            // Retrieve the existing event from the database using the provided eventId
             Optional<Events> optionalEvents = eventsRepository.findById(eventRequest.getId());
             if (optionalEvents.isPresent()) {
                 Events events = optionalEvents.get();
 
-                // Update the fields of the existing event with the values from the request
                 events.setTitle(eventRequest.getTitle());
                 events.setDate(eventRequest.getDate());
                 events.setDetails(eventRequest.getDetails());
                 events.setLocation(eventRequest.getLocation());
 
-                // Save the updated event
                 Events eventsSaved = eventsRepository.save(events);
 
-                // Set the updated event in the response
                 resp.setEvent(eventsSaved);
                 resp.setMessage("Successfully Updated");
             } else {
@@ -67,6 +64,7 @@ public class EventsService {
         }
         return resp;
     }
+
     public EventsDTO deleteEvent(int eventID) {
         EventsDTO resp = new EventsDTO();
         try {
@@ -78,6 +76,21 @@ public class EventsService {
         }
         return resp;
     }
+
+    public List<EventsDTO> findAllEvents() {
+        return eventsRepository.findAll().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    private EventsDTO convertToDTO(Events event) {
+        EventsDTO dto = new EventsDTO();
+        dto.setId(event.getId());
+        dto.setTitle(event.getTitle());
+        dto.setDate(event.getDate());
+        dto.setDetails(event.getDetails());
+        dto.setLocation(event.getLocation());
+        // Add other fields if necessary
+        return dto;
+    }
 }
-
-

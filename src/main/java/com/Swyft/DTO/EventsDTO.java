@@ -20,7 +20,6 @@ public class EventsDTO {
     @NotEmpty(message = "Event location required")
     private String location;
 
-    @NotEmpty(message = "Event date required")
     private String date;
 
     @NotEmpty(message = "Event details required")
@@ -56,5 +55,8 @@ public class EventsDTO {
         return event_title;
     }
 
+
+    public void setTitle(String title) {
+    }
 
 }
