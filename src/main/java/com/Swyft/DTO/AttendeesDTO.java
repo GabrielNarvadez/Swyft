@@ -12,7 +12,6 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class AttendeesDTO {
-    private int Attendees_id;
     private String message;
     private String error;
     private int statusCode;
@@ -29,13 +28,7 @@ public class AttendeesDTO {
     private String user_message;
     private Attendees attendees;
 
-    public int getAttendees_id() {
-        return Attendees_id;
-    }
 
-    public void setAttendees_id(int attendees_id) {
-        Attendees_id = attendees_id;
-    }
     public void setAttendees(Attendees attendees) {
         this.attendees = attendees;
     }

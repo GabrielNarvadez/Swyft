@@ -33,6 +33,7 @@ public class EventsDTO {
     // Field for holding the event object
     private Events event;
 
+    private Integer attendee_count;
     // Constructor to set the event object
     public EventsDTO() {
     }
@@ -55,6 +56,13 @@ public class EventsDTO {
         return event_title;
     }
 
+    public Integer getAttendee_count() {
+        return attendee_count;
+    }
+
+    public void setAttendee_count(Integer attendee_count) {
+        this.attendee_count = attendee_count;
+    }
 
     public void setTitle(String title) {this.event_title = title;
     }

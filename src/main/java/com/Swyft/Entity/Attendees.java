@@ -9,7 +9,7 @@ import lombok.Data;
 public class Attendees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Attendees_id;
+    private int attendees_id;
 
     private String fullname;
     private String email;
@@ -38,14 +38,6 @@ public class Attendees {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getAttendees_id() {
-        return Attendees_id;
-    }
-
-    public void setAttendees_id(int attendees_id) {
-        Attendees_id = attendees_id;
     }
 
     public String getFullname() {

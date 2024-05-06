@@ -19,6 +19,7 @@ public class AttendeesService {
 
     public AttendeesDTO createAttendees(AttendeesDTO attendeesRequest, int eventId) {
         AttendeesDTO resp = new AttendeesDTO();
+
         try {
             Attendees attendees = new Attendees();
 

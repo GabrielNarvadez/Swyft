@@ -20,6 +20,8 @@ public class EventsService {
         try {
             Events events = new Events();
 
+            events.setAttendee_count(0);
+
             events.setTitle(eventRequest.getTitle());
             events.setDate(eventRequest.getDate());
             events.setDetails(eventRequest.getDetails());
