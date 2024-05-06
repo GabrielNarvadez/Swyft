@@ -21,9 +21,9 @@ public class AttendeesControllers {
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping("/attendees/delete/{attendeesId}")
-    public ResponseEntity<AttendeesDTO> deleteAttendees(@PathVariable int attendeesId) {
-        AttendeesDTO result = attendeesService.deleteAttendees(attendeesId);
+    @DeleteMapping("/attendees/delete/{attendeesId}/{eventId}")
+    public ResponseEntity<AttendeesDTO> deleteAttendees(@PathVariable Integer attendeesId, @PathVariable Integer eventId) {
+        AttendeesDTO result = attendeesService.deleteAttendees(attendeesId, eventId);
         return ResponseEntity.ok(result);
     }
 }

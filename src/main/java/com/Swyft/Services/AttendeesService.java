@@ -51,11 +51,33 @@ public class AttendeesService {
         return resp;
     }
 
-    public AttendeesDTO deleteAttendees(int attendeesID) {
+    public AttendeesDTO deleteAttendees(Integer attendeesID, Integer eventId) {
         AttendeesDTO resp = new AttendeesDTO();
         try {
-            attendeesRepository.deleteById(attendeesID);
-            resp.setMessage("Successfully Deleted");
+            // Ensure both attendeesID and eventId are not null
+            if (attendeesID == null || eventId == null) {
+                resp.setStatusCode(400);
+                resp.setMessage("Attendee ID and Event ID cannot be null");
+                return resp;
+            }
+
+            // Updating the event attendee count
+            Optional<Events> eventOptional = eventsRepository.findById(eventId);
+            if (eventOptional.isPresent()) {
+                // Deleting the attendee
+                attendeesRepository.deleteById(attendeesID);
+                resp.setMessage("Successfully Deleted Attendee");
+
+                Events event = eventOptional.get();
+                int newAttendeeCount = event.getAttendee_count() - 1;
+                event.setAttendee_count(newAttendeeCount);
+                eventsRepository.save(event);  // Save the updated event
+
+                resp.setMessage("Successfully Updated Event Attendee Count");
+            } else {
+                resp.setMessage("Event not found");
+                resp.setStatusCode(404);
+            }
         } catch (Exception e) {
             resp.setStatusCode(500);
             resp.setError(e.getMessage());
