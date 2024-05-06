@@ -5,21 +5,27 @@ import com.Swyft.Entity.Events;
 import com.Swyft.DTO.EventsDTO;
 import com.Swyft.Repositories.EventsRepository;
 import com.Swyft.Services.EventsService;
+import com.Swyft.Services.StorageService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 
-@Controller
+@RestController
 public class EventsControllers {
 
 
     private final EventsService eventsService;
+    private StorageService service;
 
     @Autowired
     public EventsControllers(EventsService eventsService) {
@@ -40,5 +46,18 @@ public class EventsControllers {
     public ResponseEntity<EventsDTO> deleteEvent(@PathVariable int eventId) {
         return ResponseEntity.ok(eventsService.deleteEvent(eventId)); //NAME OF HTML FILE TO BE RETURNED HERE
     }
+    @PostMapping("/event/fileSystem")
+    public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("image") MultipartFile file) throws IOException {
+        String uploadImage = service.uploadImageToFileSystem(file);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(uploadImage);
+    }
+    @GetMapping("/event/fileSystem/{fileName}")
+    public ResponseEntity<?> downloadImageFromFileSystem(@PathVariable String fileName) throws IOException {
+        byte[] imageData=service.downloadImageFromFileSystem(fileName);
+        return ResponseEntity.status(HttpStatus.OK)
+                .contentType(MediaType.valueOf("image/png"))
+                .body(imageData);
 
+    }
 }

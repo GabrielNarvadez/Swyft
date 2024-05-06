@@ -55,4 +55,5 @@ public class EventsDTO {
     public String getTitle() {
         return event_title;
     }
+
 }
