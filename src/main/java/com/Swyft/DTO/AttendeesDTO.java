@@ -24,7 +24,7 @@ public class AttendeesDTO {
     private String email;
 
     @NotEmpty(message = "Phone required")
-    private Integer phone;
+    private Long phone;
 
     private String user_message;
     private Attendees attendees;

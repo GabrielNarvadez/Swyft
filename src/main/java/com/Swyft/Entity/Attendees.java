@@ -13,7 +13,7 @@ public class Attendees {
 
     private String fullname;
     private String email;
-    private Integer phone;
+    private Long phone;
     private String user_message;
 
     public String getUser_message() {
@@ -24,11 +24,11 @@ public class Attendees {
         this.user_message = user_message;
     }
 
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 
