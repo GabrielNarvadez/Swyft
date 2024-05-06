@@ -25,3 +25,6 @@ def event_delete(request):
 
 def login(request):
     return render(request, 'login.html')
+
+def event_reg(request):
+    return render(request, 'event-reg.html')
