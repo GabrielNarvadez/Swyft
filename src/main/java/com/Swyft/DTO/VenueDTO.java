@@ -1,6 +1,5 @@
 package com.Swyft.DTO;
 
-import com.Swyft.Entity.Events;
 import com.Swyft.Entity.Venues;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

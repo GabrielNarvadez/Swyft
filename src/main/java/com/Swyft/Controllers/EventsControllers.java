@@ -1,6 +1,7 @@
 package com.Swyft.Controllers;
 
 import com.Swyft.DTO.EventsDTO;
+import com.Swyft.DTO.RequestDTO;
 import com.Swyft.Services.EventsService;
 import com.Swyft.Services.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,4 +55,5 @@ public class EventsControllers {
                 .contentType(MediaType.valueOf("image/png"))
                 .body(imageData);
     }
+
 }

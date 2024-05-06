@@ -52,7 +52,6 @@ public class UsersManagementService {
         return resp;
     }
 
-
     public RequestDTO login(RequestDTO loginRequest){
         RequestDTO response = new RequestDTO();
         try {
@@ -76,10 +75,6 @@ public class UsersManagementService {
         return response;
     }
 
-
-
-
-
     public RequestDTO refreshToken(RequestDTO refreshTokenReqiest){
         RequestDTO response = new RequestDTO();
         try{
@@ -102,7 +97,6 @@ public class UsersManagementService {
             return response;
         }
     }
-
 
     public RequestDTO getAllUsers() {
         RequestDTO reqRes = new RequestDTO();

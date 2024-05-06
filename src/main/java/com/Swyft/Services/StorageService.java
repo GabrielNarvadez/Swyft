@@ -23,7 +23,7 @@ public class StorageService {
     @Autowired
     private FileDataRepository fileDataRepository;
 
-    private final String FOLDER_PATH = "C:/GitHub/Swyft/src/main/java/com/Swyft/Images";
+    private final String FOLDER_PATH = "C:/Swyft/src/main/java/com/Swyft/Images";
 
 
     public String uploadImageToFileSystem(MultipartFile file) throws IOException {

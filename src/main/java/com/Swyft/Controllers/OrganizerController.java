@@ -1,0 +1,41 @@
+package com.Swyft.Controllers;
+
+import com.Swyft.DTO.EventsDTO;
+import com.Swyft.DTO.RequestDTO;
+import com.Swyft.DTO.VenueDTO;
+import com.Swyft.Entity.Organizer;
+import com.Swyft.DTO.OrganizerDTO;
+import com.Swyft.Repositories.OrganizerRepository;
+import com.Swyft.Services.OrganizerService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
+
+@Controller
+public class OrganizerController  {
+
+    private final OrganizerService organizerService;
+
+    @Autowired
+    public OrganizerController(OrganizerService organizerService) {
+        this.organizerService = organizerService; //NAME OF HTML FILE TO BE RETURNED HERE
+    }
+
+    @PostMapping("organizer/create")
+    public  ResponseEntity<OrganizerDTO> createOrganizer(@RequestBody OrganizerDTO create) {
+        return ResponseEntity.ok(organizerService.createOrganizer(create)); //NAME OF HTML FILE TO BE RETURNED HERE
+    }
+
+    @PutMapping("organizer/id={organizerId}")
+    public ResponseEntity<OrganizerDTO> updateOrganizer(@PathVariable int organizerId, @Valid @RequestBody OrganizerDTO update) {
+        update.setOrganizer_id(organizerId);
+        return ResponseEntity.ok(organizerService.updateOrganizer(update)); //NAME OF HTML FILE TO BE RETURNED HERE
+    }
+}
