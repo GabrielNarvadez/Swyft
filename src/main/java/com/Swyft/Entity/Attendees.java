@@ -20,7 +20,7 @@ public class Attendees {
         return user_message;
     }
 
-    public void setUser_message(String message) {
+    public void setUser_message(String user_message) {
         this.user_message = user_message;
     }
 

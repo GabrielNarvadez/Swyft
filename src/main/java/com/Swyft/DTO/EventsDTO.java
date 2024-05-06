@@ -56,4 +56,5 @@ public class EventsDTO {
         return event_title;
     }
 
+
 }
