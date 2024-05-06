@@ -32,9 +32,8 @@ public class Events {
     }
 
     public void setTitle(String title) {
-        this.event_title = event_title;
+        this.event_title = title;
     }
-
 
     public String getDetails() {
         return details;
@@ -60,7 +59,7 @@ public class Events {
         this.attendee_count = attendee_count;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date) { this.date = date;
     }
 
     public String getDate() {

@@ -41,7 +41,7 @@ public class EventsControllers {
         return ResponseEntity.ok(eventsService.deleteEvent(eventId));
     }
 
-    @GetMapping("events")
+    @GetMapping("/event/get")
     public ResponseEntity<List<EventsDTO>> getAllEvents() {
         List<EventsDTO> events = eventsService.findAllEvents();
         return ResponseEntity.ok(events);

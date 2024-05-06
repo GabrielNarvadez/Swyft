@@ -56,7 +56,7 @@ public class EventsDTO {
     }
 
 
-    public void setTitle(String title) {
+    public void setTitle(String title) {this.event_title = title;
     }
 
 }
