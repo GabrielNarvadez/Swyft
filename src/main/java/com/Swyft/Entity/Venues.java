@@ -16,7 +16,7 @@ public class Venues {
 
     private String venue_name;
     private String address;
-    private String capacity;
+    private Integer capacity;
     private String facilities;
 
     @Column(columnDefinition = "TEXT")
@@ -45,11 +45,11 @@ public class Venues {
         this.address = address;
     }
 
-    public String getCapacity() {
+    public Integer getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 
@@ -60,4 +60,5 @@ public class Venues {
     public void setFacilities(String facilities) {
         this.facilities = facilities;
     }
+
 }

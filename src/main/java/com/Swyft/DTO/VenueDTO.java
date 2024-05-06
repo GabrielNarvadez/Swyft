@@ -51,4 +51,12 @@ public class VenueDTO {
     public void setVenue(Venues venue) {
         this.venue = venue;
     }
+
+    public @NotEmpty(message = "Venue Capacity required") Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(@NotEmpty(message = "Venue Capacity required") Integer capacity) {
+        this.capacity = capacity;
+    }
 }

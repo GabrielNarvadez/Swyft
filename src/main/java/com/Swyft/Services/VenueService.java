@@ -20,13 +20,13 @@ public class VenueService {
 
             venues.setVenue_name(venueRequest.getVenue_name());
             venues.setAddress(venueRequest.getAddress());
-            venues.setCapacity(String.valueOf(venueRequest.getCapacity()));
+            venues.setCapacity(venueRequest.getCapacity());
             venues.setFacilities(venueRequest.getFacilities());
 
             Venues venuesSaved = venueRepository.save(venues);
 
             if (venuesSaved.getVenue_name().equals(venueRequest.getVenue_name())) {
-                resp.setVenue_name(String.valueOf(venuesSaved)); // Assuming you have a setter for event in EventsDTO
+                resp.setVenue(venuesSaved); // Assuming you have a setter for event in EventsDTO
                 resp.setMessage("Successfully Saved");
             }
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class VenueService {
                 // Update the fields of the existing event with the values from the request
                 venues.setVenue_name(venueRequest.getVenue_name());
                 venues.setAddress(venueRequest.getAddress());
-                venues.setCapacity(String.valueOf(venueRequest.getCapacity()));
+                venues.setCapacity(venueRequest.getCapacity());
                 venues.setFacilities(venueRequest.getFacilities());
 
                 // Save the updated event
