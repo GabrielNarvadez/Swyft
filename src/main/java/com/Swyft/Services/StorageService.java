@@ -23,39 +23,22 @@ public class StorageService {
     @Autowired
     private FileDataRepository fileDataRepository;
 
-    private final String FOLDER_PATH = "/Users/javatechie/Desktop/MyFIles/";
-
-    public String uploadImage(MultipartFile file) throws IOException {
-        ImageData imageData = repository.save(ImageData.builder()
-                .name(file.getOriginalFilename())
-                .type(file.getContentType())
-                .imageData(ImageUtils.compressImage(file.getBytes())).build());
-        if (imageData != null) {
-            return "file uploaded successfully : " + file.getOriginalFilename();
-        }
-        return null;
-    }
-
-
-    public byte[] downloadImage(String fileName) {
-        Optional<ImageData> dbImageData = repository.findByName(fileName);
-        byte[] images = ImageUtils.decompressImage(dbImageData.get().getImageData());
-        return images;
-    }
+    private final String FOLDER_PATH = "C:/Swyft/src/main/java/com/Swyft/Images";
 
 
     public String uploadImageToFileSystem(MultipartFile file) throws IOException {
-        String filePath = FOLDER_PATH + file.getOriginalFilename();
+        String fileName = file.getOriginalFilename();
+        String filePath = FOLDER_PATH + File.separator + fileName; // Construct the complete file path
 
         FileData fileData = fileDataRepository.save(FileData.builder()
-                .name(file.getOriginalFilename())
+                .name(fileName)
                 .type(file.getContentType())
                 .filePath(filePath).build());
 
         file.transferTo(new File(filePath));
 
         if (fileData != null) {
-            return "file uploaded successfully : " + filePath;
+            return "File uploaded successfully: " + filePath;
         }
         return null;
     }
