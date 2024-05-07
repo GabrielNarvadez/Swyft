@@ -28,7 +28,7 @@ public class StorageService {
 
     public String uploadImageToFileSystem(MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
-        String filePath = FOLDER_PATH + File.separator + fileName; // Construct the complete file path
+        String filePath = FOLDER_PATH + File.separator + fileName;
 
         FileData fileData = fileDataRepository.save(FileData.builder()
                 .name(fileName)

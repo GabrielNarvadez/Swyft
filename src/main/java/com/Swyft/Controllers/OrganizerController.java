@@ -27,22 +27,22 @@ public class OrganizerController  {
 
     @Autowired
     public OrganizerController(OrganizerService organizerService) {
-        this.organizerService = organizerService; //NAME OF HTML FILE TO BE RETURNED HERE
+        this.organizerService = organizerService;
     }
 
     @PostMapping("/create")
     public  ResponseEntity<OrganizerDTO> createOrganizer(@RequestBody OrganizerDTO create) {
-        return ResponseEntity.ok(organizerService.createOrganizer(create)); //NAME OF HTML FILE TO BE RETURNED HERE
+        return ResponseEntity.ok(organizerService.createOrganizer(create));
     }
 
     @PutMapping("/update/id={organizerId}")
     public ResponseEntity<OrganizerDTO> updateOrganizer(@PathVariable int organizerId, @Valid @RequestBody OrganizerDTO update) {
         update.setOrganizer_id(organizerId);
-        return ResponseEntity.ok(organizerService.updateOrganizer(update)); //NAME OF HTML FILE TO BE RETURNED HERE
+        return ResponseEntity.ok(organizerService.updateOrganizer(update));
     }
     @DeleteMapping("/delete/id={organizerId}")
     public ResponseEntity<OrganizerDTO> deleteOrganizer(@PathVariable int organizerId) {
-        return ResponseEntity.ok(organizerService.deleteOrganizer(organizerId)); //NAME OF HTML FILE TO BE RETURNED HERE
+        return ResponseEntity.ok(organizerService.deleteOrganizer(organizerId));
     }
     @GetMapping("/get")
     public ResponseEntity<List<OrganizerDTO>> getAllOrganizers() {

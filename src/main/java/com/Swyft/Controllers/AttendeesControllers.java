@@ -23,10 +23,10 @@ public class AttendeesControllers {
 
     @PostMapping("/create")
     public ResponseEntity<AttendeesDTO> createAttendees(@RequestBody AttendeesDTO create) {
-        // Extract event ID from the AttendeesDTO object
+
         int eventId = create.getEvent_id();
 
-        // Pass the event ID along with the AttendeesDTO object to the service method
+
         AttendeesDTO result = attendeesService.createAttendees(create, eventId);
 
         return ResponseEntity.ok(result);
@@ -40,10 +40,9 @@ public class AttendeesControllers {
 
     @PutMapping("/mark/attendance={attendees_id}")
     public ResponseEntity<Boolean> markAttendance(@PathVariable int attendees_id, @RequestBody AttendeesDTO attendeesDTO) {
-        // Call the service method to mark attendance
+
         attendanceService.markAttendance(attendees_id, attendeesDTO);
 
-        // You can return true/false based on whether attendance was successfully marked
         return ResponseEntity.ok(true);
     }
 }

@@ -30,16 +30,16 @@ public class VenueController {
 
     @PostMapping("/create")
     public ResponseEntity<VenueDTO> createVenue(@RequestBody VenueDTO create){
-        return ResponseEntity.ok(venueService.createVenue(create)); //NAME OF HTML FILE TO BE RETURNED HERE
+        return ResponseEntity.ok(venueService.createVenue(create));
     }
     @PutMapping("/update/id={venueId}")
     public ResponseEntity<VenueDTO> updateVenue(@PathVariable int venueId, @Valid @RequestBody VenueDTO update) {
         update.setVenue_id(venueId);
-        return ResponseEntity.ok(venueService.updateVenue(update)); //NAME OF HTML FILE TO BE RETURNED HERE
+        return ResponseEntity.ok(venueService.updateVenue(update));
     }
     @DeleteMapping("/delete/id={venueId}")
     public ResponseEntity<VenueDTO> deleteVenue(@PathVariable int venueId) {
-        return ResponseEntity.ok(venueService.deleteVenue(venueId)); //NAME OF HTML FILE TO BE RETURNED HERE
+        return ResponseEntity.ok(venueService.deleteVenue(venueId));
     }
     @GetMapping("/get")
     public ResponseEntity<List<VenueDTO>> getAllVenues() {

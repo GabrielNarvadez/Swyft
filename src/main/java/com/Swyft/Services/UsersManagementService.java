@@ -165,9 +165,9 @@ public class UsersManagementService {
                 existingUser.setCity(updatedUser.getCity());
                 existingUser.setRole(updatedUser.getRole());
 
-                // Check if password is present in the request
+
                 if (updatedUser.getPassword() != null && !updatedUser.getPassword().isEmpty()) {
-                    // Encode the password and update it
+
                     existingUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
                 }
 
