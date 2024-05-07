@@ -12,10 +12,12 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class AttendeesDTO {
+    private int attendees_id;
     private String message;
     private String error;
     private int statusCode;
     private int event_id;
+    private boolean has_attended = false;
 
     @NotEmpty(message = "Name required")
     private String fullname;
@@ -56,5 +58,21 @@ public class AttendeesDTO {
 
     public void setEvent_id(int event_id) {
         this.event_id = event_id;
+    }
+
+    public boolean isHas_attended() {
+        return has_attended;
+    }
+
+    public void setHas_attended(boolean has_attended) {
+        this.has_attended = has_attended;
+    }
+
+    public int getAttendees_id() {
+        return attendees_id;
+    }
+
+    public void setAttendees_id(int attendees_id) {
+        this.attendees_id = attendees_id;
     }
 }

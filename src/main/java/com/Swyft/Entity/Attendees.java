@@ -16,6 +16,7 @@ public class Attendees {
     private Long phone;
     private String user_message;
     private Integer event_id;
+    private boolean has_attended = false;
 
     public String getUser_message() {
         return user_message;
@@ -55,5 +56,13 @@ public class Attendees {
 
     public void setEvent_id(Integer event_id) {
         this.event_id = event_id;
+    }
+
+    public boolean isHas_attended() {
+        return has_attended;
+    }
+
+    public void setHas_attended(boolean has_attended) {
+        this.has_attended = has_attended;
     }
 }
