@@ -15,6 +15,7 @@ public class Attendees {
     private String email;
     private Long phone;
     private String user_message;
+    private Integer event_id;
 
     public String getUser_message() {
         return user_message;
@@ -46,5 +47,13 @@ public class Attendees {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public Integer getEvent_id() {
+        return event_id;
+    }
+
+    public void setEvent_id(Integer event_id) {
+        this.event_id = event_id;
     }
 }

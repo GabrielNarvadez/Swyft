@@ -17,21 +17,21 @@ public class AttendeesService {
     @Autowired
     private EventsRepository eventsRepository;
 
-    public AttendeesDTO createAttendees(AttendeesDTO attendeesRequest, int eventId) {
+    public AttendeesDTO createAttendees(AttendeesDTO attendeesRequest, int event_id) {
         AttendeesDTO resp = new AttendeesDTO();
 
         try {
             Attendees attendees = new Attendees();
-
             attendees.setFullname(attendeesRequest.getFullname());
             attendees.setEmail(attendeesRequest.getEmail());
             attendees.setPhone(attendeesRequest.getPhone());
             attendees.setUser_message(attendeesRequest.getUser_message());
+            attendees.setEvent_id(attendees.getEvent_id());
 
             Attendees attendeesSaved = attendeesRepository.save(attendees);
 
             if (attendeesSaved != null) {
-                Optional<Events> eventOptional = eventsRepository.findById(eventId);
+                Optional<Events> eventOptional = eventsRepository.findById(event_id);
                 if (eventOptional.isPresent()) {
                     Events event = eventOptional.get();
                     event.setAttendee_count(event.getAttendee_count() + 1);

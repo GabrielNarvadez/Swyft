@@ -89,15 +89,18 @@ public class EventsService {
 
     private EventsDTO convertToDTO(Events event) {
         EventsDTO dto = new EventsDTO();
-        VenueDTO venueDTO = new VenueDTO();
         dto.setEvent_id(event.getEvent_id());
         dto.setTitle(event.getTitle());
         dto.setDate(event.getDate());
         dto.setDetails(event.getDetails());
         dto.setLocation(event.getLocation());
         dto.setDate_posted(event.getDate_posted());
-        venueDTO.setVenue_id(venueDTO.getVenue_id());
-        // Add other fields if necessary
+//
+//        // Calculate days ago count
+//        LocalDate currentDate = LocalDate.now();
+//        Period period = Period.between(event.getDate_posted(), currentDate);
+//        dto.setDaysAgo(period.getDays());
+
         return dto;
     }
 }

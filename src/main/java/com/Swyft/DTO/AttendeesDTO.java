@@ -15,6 +15,7 @@ public class AttendeesDTO {
     private String message;
     private String error;
     private int statusCode;
+    private int event_id;
 
     @NotEmpty(message = "Name required")
     private String fullname;
@@ -47,5 +48,13 @@ public class AttendeesDTO {
 
     public void setUser_message(String user_message) {
         this.user_message = user_message;
+    }
+
+    public int getEvent_id() {
+        return event_id;
+    }
+
+    public void setEvent_id(int event_id) {
+        this.event_id = event_id;
     }
 }

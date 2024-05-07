@@ -81,7 +81,7 @@ public class EventsDTO {
         return days_ago;
     }
 
-    public void setDays_ago(Integer days_ago) {
+    public void setDays_ago(Integer days) {
         this.days_ago = days_ago;
     }
 
@@ -89,4 +89,6 @@ public class EventsDTO {
     }
     private List<Events> EventsList;
 
+
 }
+

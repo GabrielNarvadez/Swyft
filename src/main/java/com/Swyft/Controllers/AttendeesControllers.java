@@ -17,9 +17,14 @@ public class AttendeesControllers {
         this.attendeesService = attendeesService;
     }
 
-    @PostMapping("/create/{eventId}")
-    public ResponseEntity<AttendeesDTO> createAttendees(@RequestBody AttendeesDTO create, @PathVariable int eventId) {
+    @PostMapping("/create")
+    public ResponseEntity<AttendeesDTO> createAttendees(@RequestBody AttendeesDTO create) {
+        // Extract event ID from the AttendeesDTO object
+        int eventId = create.getEvent_id();
+
+        // Pass the event ID along with the AttendeesDTO object to the service method
         AttendeesDTO result = attendeesService.createAttendees(create, eventId);
+
         return ResponseEntity.ok(result);
     }
 
