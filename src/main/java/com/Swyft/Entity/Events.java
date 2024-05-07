@@ -27,7 +27,7 @@ public class Events {
         return event_id;
     }
 
-    public void setId(int event_id) {
+    public void setEvent_id(int event_id) {
         this.event_id = this.event_id;
     }
 
