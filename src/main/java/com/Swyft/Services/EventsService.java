@@ -25,9 +25,10 @@ public class EventsService {
             events.setDate_posted(LocalDate.now());
             events.setAttendee_count(0);
             events.setTitle(eventRequest.getTitle());
-            events.setDate(events.getDate());
+            events.setDate(eventRequest.getDate());
             events.setDetails(eventRequest.getDetails());
             events.setLocation(eventRequest.getLocation());
+            events.setRng();
 
             Events eventsSaved = eventsRepository.save(events);
 

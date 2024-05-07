@@ -3,6 +3,8 @@ package com.Swyft.Entity;
 
 import jakarta.persistence.*;
 import java.time.*;
+//functionality crutch lmao
+import java.util.Random;
 
 @Entity
 @Table(name = "Events")
@@ -15,10 +17,10 @@ public class Events {
     private Integer date;
     private String details;
     private String location;
-    private Integer event_venue_id;
     private Integer attendee_count;
     private LocalDate date_posted;
     private Integer days_ago;
+    private Integer rng;
 
     // Getters and setters
     public int getEvent_id() {
@@ -83,5 +85,14 @@ public class Events {
 
     public void setDays_ago(Integer days_ago) {
         this.days_ago = days_ago;
+    }
+
+    public Integer getRng() {
+        return rng;
+    }
+
+    public void setRng() {
+        Random random = new Random();
+        this.rng = random.nextInt(1000);
     }
 }

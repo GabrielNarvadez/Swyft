@@ -18,6 +18,7 @@ public class EventsDTO {
     private Integer event_id; // Added ID field
     private LocalDate date_posted; //Added DATE field
     private Integer days_ago;
+    private Integer rng;
 
     @NotEmpty(message = "Event title required")
     private String event_title;
@@ -87,6 +88,15 @@ public class EventsDTO {
 
     public void setTitle(String title) {this.event_title = title;
     }
+
+    public Integer getRng() {
+        return rng;
+    }
+
+    public void setRng(Integer rng) {
+        this.rng = rng;
+    }
+
     private List<Events> EventsList;
 
 
