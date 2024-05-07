@@ -1,6 +1,7 @@
 package com.Swyft.Controllers;
 
 import com.Swyft.DTO.AttendeesDTO;
+import com.Swyft.DTO.EventsDTO;
 import com.Swyft.Services.AttendeesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +32,9 @@ public class AttendeesControllers {
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping("/delete/{attendeesId}/{eventId}")
-    public ResponseEntity<AttendeesDTO> deleteAttendees(@PathVariable Integer attendeesId, @PathVariable Integer eventId) {
-        AttendeesDTO result = attendeesService.deleteAttendees(attendeesId, eventId);
+    @DeleteMapping("/delete")
+    public ResponseEntity<AttendeesDTO> deleteAttendees(AttendeesDTO attendeesDTO, EventsDTO eventsDTO, Integer attendees_id, Integer eventId) {
+        AttendeesDTO result = attendeesService.deleteAttendees(attendeesDTO,eventsDTO,attendees_id, eventId);
         return ResponseEntity.ok(result);
     }
 

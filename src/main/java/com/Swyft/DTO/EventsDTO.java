@@ -99,6 +99,12 @@ public class EventsDTO {
 
     private List<Events> EventsList;
 
+    public Integer getEvent_id() {
+        return event_id;
+    }
 
+    public void setEvent_id(Integer event_id) {
+        this.event_id = event_id;
+    }
 }
 

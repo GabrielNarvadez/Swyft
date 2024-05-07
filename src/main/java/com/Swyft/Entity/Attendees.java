@@ -65,4 +65,12 @@ public class Attendees {
     public void setHas_attended(boolean has_attended) {
         this.has_attended = has_attended;
     }
+
+    public int getAttendees_id() {
+        return attendees_id;
+    }
+
+    public void setAttendees_id(int attendees_id) {
+        this.attendees_id = attendees_id;
+    }
 }

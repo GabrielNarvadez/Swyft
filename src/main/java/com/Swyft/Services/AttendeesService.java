@@ -1,6 +1,7 @@
 package com.Swyft.Services;
 
 import com.Swyft.DTO.AttendeesDTO;
+import com.Swyft.DTO.EventsDTO;
 import com.Swyft.Entity.Attendees;
 import com.Swyft.Entity.Events;
 import com.Swyft.Repositories.AttendeesRepository;
@@ -28,7 +29,7 @@ public class AttendeesService {
             attendees.setEmail(attendeesRequest.getEmail());
             attendees.setPhone(attendeesRequest.getPhone());
             attendees.setUser_message(attendeesRequest.getUser_message());
-            attendees.setEvent_id(attendees.getEvent_id());
+            attendees.setEvent_id(attendeesRequest.getEvent_id());
 
             Attendees attendeesSaved = attendeesRepository.save(attendees);
 
@@ -53,39 +54,56 @@ public class AttendeesService {
         return resp;
     }
 
-    public AttendeesDTO deleteAttendees(Integer attendeesID, Integer eventId) {
-        AttendeesDTO resp = new AttendeesDTO();
-        try {
-            // Ensure both attendeesID and eventId are not null
-            if (attendeesID == null || eventId == null) {
-                resp.setStatusCode(400);
-                resp.setMessage("Attendee ID and Event ID cannot be null");
-                return resp;
+        public AttendeesDTO deleteAttendees(AttendeesDTO attendeesRequest, EventsDTO eventsRequest, Integer attendees_id, Integer eventId) {
+            AttendeesDTO resp = new AttendeesDTO();
+            try {
+                Attendees attendees = new Attendees();
+                Events events = new Events();
+                attendees.setAttendees_id(attendeesRequest.getAttendees_id());
+                events.setId(eventsRequest.getEvent_Id());
+
+                // Ensure both attendees_id and eventId are not null
+                if (attendees_id == null || eventId == null) {
+                    resp.setStatusCode(400);
+                    resp.setMessage("Attendee ID and Event ID cannot be null");
+                    return resp;
+                }
+
+                // Check if the attendee exists
+                Optional<Attendees> attendeeOptional = attendeesRepository.findById(attendees_id);
+                if (attendeeOptional.isPresent()) {
+                    // Deleting the attendee
+                    attendeesRepository.deleteById(attendees_id);
+                    resp.setMessage("Successfully Deleted Attendee");
+
+                    // Update the event attendee count
+                    Optional<Events> eventOptional = eventsRepository.findById(eventId);
+                    if (eventOptional.isPresent()) {
+                        Events event = eventOptional.get();
+                        int newAttendeeCount = event.getAttendee_count() - 1;
+                        event.setAttendee_count(newAttendeeCount);
+                        eventsRepository.save(event);
+                    } else {
+                        // Event not found
+                        resp.setMessage("Event not found");
+                        resp.setStatusCode(404);
+                        return resp;
+                    }
+
+                    // Set success response
+                    resp.setMessage("Successfully Deleted Attendee");
+                } else {
+                    // Attendee not found
+                    resp.setMessage("Attendee not found");
+                    resp.setStatusCode(404);
+                }
+            } catch (Exception e) {
+                // Handle exceptions
+                resp.setStatusCode(500);
+                resp.setError(e.getMessage());
             }
-
-            // Updating the event attendee count
-            Optional<Events> eventOptional = eventsRepository.findById(eventId);
-            if (eventOptional.isPresent()) {
-                // Deleting the attendee
-                attendeesRepository.deleteById(attendeesID);
-                resp.setMessage("Successfully Deleted Attendee");
-
-                Events event = eventOptional.get();
-                int newAttendeeCount = event.getAttendee_count() - 1;
-                event.setAttendee_count(newAttendeeCount);
-                eventsRepository.save(event);  // Save the updated event
-
-                resp.setMessage("Successfully Updated Event Attendee Count");
-            } else {
-                resp.setMessage("Event not found");
-                resp.setStatusCode(404);
-            }
-        } catch (Exception e) {
-            resp.setStatusCode(500);
-            resp.setError(e.getMessage());
+            return resp;
         }
-        return resp;
-    }
     @Service
     public class AttendanceService {
 

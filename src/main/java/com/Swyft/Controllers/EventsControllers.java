@@ -1,6 +1,7 @@
 package com.Swyft.Controllers;
 
 import com.Swyft.DTO.EventsDTO;
+import com.Swyft.Entity.Events;
 import com.Swyft.Services.EventsService;
 import com.Swyft.Services.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,10 @@ public class EventsControllers {
         update.setEventId(eventId);
         return ResponseEntity.ok(eventsService.updateEvent(update));
     }
-
-    @DeleteMapping("/delete/{eventId}")
-    public ResponseEntity<EventsDTO> deleteEvent(@PathVariable int eventId) {
-        return ResponseEntity.ok(eventsService.deleteEvent(eventId));
+    @DeleteMapping("/delete")
+    public ResponseEntity<EventsDTO> deleteEvent(@RequestBody EventsDTO delete) {
+        EventsDTO result = eventsService.deleteEvent(delete);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/get")

@@ -70,9 +70,10 @@ public class EventsService {
         return resp;
     }
 
-    public EventsDTO deleteEvent(int eventID) {
+    public EventsDTO deleteEvent(EventsDTO eventsRequest) {
         EventsDTO resp = new EventsDTO();
         try {
+            Integer eventID = eventsRequest.getEvent_Id(); // Get the event ID from the request
             eventsRepository.deleteById(eventID);
             resp.setMessage("Successfully Deleted");
         } catch (Exception e) {
