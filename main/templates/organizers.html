@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    {% include 'personal/snippets/header.html' %}
+</head>
+
+<body class="dark-theme" data-bg-src="../static/assets/img/bg/dark-bg.png">
+
+    <!--[if lte IE 9]>
+    	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+
+
+    <!--********************************
+   		Code Start From Here 
+	******************************** -->
+
+
+    {% include 'personal/snippets/nav.html' %}
+
+    <!--==============================
+    Breadcumb
+============================== -->
+    <div class="breadcumb-wrapper " data-bg-src="../static/assets/img/bg/breadcumb-bg.jpg" data-overlay="black" data-opacity="8">
+        <div class="container">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title">Organizers</h1>
+                <ul class="breadcumb-menu">
+                    <li><a href="index"></a>Home</li>
+                    <li>Organizers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--==============================
+Registration Area  
+==============================-->
+<div class="space-top">
+    <form id="organizer" action="{% url 'organizers' %}" method="post" class="th-contact-form team-details-form" data-bg-src="../../static/assets/img/bg/feature-bg1.png">
+        {% csrf_token %}
+        <div class="form-title mb-30 text-center">
+            <h4 class="mt-n1">Register Here</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 form-group">
+                <input type="text" name="organizer_name" placeholder="Full Name" class="form-control style2">
+            </div>
+            <div class="col-lg-4 form-group">
+                <input type="email" name="contact_info" placeholder="Email Address" class="form-control style2">
+            </div>
+            <div class="col-lg-4 form-group">
+                <input type="tel" name="events_organized" placeholder="Events Organized" class="form-control style2">
+            </div>
+            <div class="col-12 form-group mb-0 text-center">
+                <button type="submit" class="th-btn">Submit <i class="fas fa-arrow-up-right ms-2"></i></button>
+            </div>
+        </div>
+    </form>
+</div>          
+
+<div class="space-top">
+    <form id="organizer" action="{% url 'organizers' %}" method="post" class="th-contact-form team-details-form" data-bg-src="../../static/assets/img/bg/feature-bg1.png">
+        {% csrf_token %}
+        <div class="form-title mb-30 text-center">
+            <h4 class="mt-n1">Remove Here</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 form-group">
+                <input type="text" name="organizer_name" placeholder="Full Name" class="form-control style2">
+            </div>
+            <div class="col-lg-4 form-group">
+                <input type="email" name="contact_info" placeholder="Email Address" class="form-control style2">
+            </div>
+            <div class="col-12 form-group mb-0 text-center">
+                <button type="submit" class="th-btn">Remove <i class="fas fa-arrow-up-right ms-2"></i></button>
+            </div>
+        </div>
+    </form>
+</div>    
+
+    {% include 'personal/snippets/footer.html' %}
+
+</body>
+
+</html>
