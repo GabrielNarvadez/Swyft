@@ -14,6 +14,9 @@ from django.shortcuts import render
 from rest_framework import generics
 from .models import Event
 from .serializers import EventDisplay
+from django.shortcuts import redirect
+from django.http import HttpResponseBadRequest
+
 
 # Create your views here.
 def home_screen_view(request):
@@ -41,7 +44,7 @@ def events(request):
     else:
         # If the request was not successful, handle the error
         error_message = f"Failed to fetch events from API: {response.status_code}"
-        return render(request, 'error.html', {'error_message': error_message})
+        return render(request, 'error.html', {'error_message': error_message})  
 
 
 @csrf_exempt
@@ -87,3 +90,21 @@ def login(request):
 
 def event_reg(request):
     return render(request, 'event-reg.html')
+
+@csrf_exempt
+def attendance(request, attendees_id):
+    if request.method == 'GET':
+        # Prepare the URL with the attendees_id
+        url = f'http://localhost:8080/api/attendees/mark/attendance={attendees_id}'
+        
+
+        # Send the PUT request using requests library
+        response = requests.put(url, json={})
+
+        # Check the response status code
+        if response.status_code == 200:
+            return HttpResponse('PUT request sent successfully')
+        else:
+            return HttpResponseBadRequest('Failed to send PUT request')
+    else:
+        return HttpResponseBadRequest('Method not allowed')

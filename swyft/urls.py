@@ -28,6 +28,7 @@ from main.views import (
     event_delete,
     login,
     event_reg,
+    attendance,
 )
 
 urlpatterns = [
@@ -41,4 +42,6 @@ urlpatterns = [
     path('event-delete/', event_delete, name='event_delete'),
     path('login/', login, name='login'),
     path('event-reg/', event_reg, name='event_reg'),
+    path('api/attendance/<int:attendees_id>/', attendance, name='attendance'),
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
