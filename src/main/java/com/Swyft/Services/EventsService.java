@@ -7,7 +7,8 @@ import com.Swyft.DTO.EventsDTO;
 import com.Swyft.Repositories.EventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,11 +22,10 @@ public class EventsService {
         EventsDTO resp = new EventsDTO();
         try {
             Events events = new Events();
-
+            events.setDate_posted(LocalDate.now());
             events.setAttendee_count(0);
-
             events.setTitle(eventRequest.getTitle());
-            events.setDate(eventRequest.getDate());
+            events.setDate(events.getDate());
             events.setDetails(eventRequest.getDetails());
             events.setLocation(eventRequest.getLocation());
 
@@ -95,8 +95,23 @@ public class EventsService {
         dto.setDate(event.getDate());
         dto.setDetails(event.getDetails());
         dto.setLocation(event.getLocation());
+        dto.setDate_posted(event.getDate_posted());
         venueDTO.setVenue_id(venueDTO.getVenue_id());
         // Add other fields if necessary
         return dto;
     }
 }
+//    public static Integer calculateDaysAgo(LocalDate date_posted) {
+//        LocalDate currentDate = LocalDate.now();
+//        EventsDTO eventsDTO = new EventsDTO();
+//        Period period = Period.between(date_posted, currentDate);
+//
+//        int days = period.getDays();
+//
+//        if (days > 0) {
+//            return new EventsDTO(days);
+//        } else {
+//            return new EventsDTO(0);
+//        }
+//    }
+//}

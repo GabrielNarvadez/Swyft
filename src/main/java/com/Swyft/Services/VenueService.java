@@ -1,5 +1,8 @@
 package com.Swyft.Services;
 
+import com.Swyft.DTO.EventsDTO;
+import com.Swyft.DTO.OrganizerDTO;
+import com.Swyft.Entity.Organizer;
 import com.Swyft.Entity.Venues;
 import com.Swyft.DTO.VenueDTO;
 import com.Swyft.Repositories.VenueRepository;
@@ -7,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class VenueService {
@@ -66,6 +70,11 @@ public class VenueService {
         }
         return resp;
     }
+    public List<VenueDTO> findAllVenues() {
+        return venueRepository.findAll().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
     public VenueDTO deleteVenue(int venueID) {
         VenueDTO resp = new VenueDTO();
         try {
@@ -76,5 +85,15 @@ public class VenueService {
             resp.setError(e.getMessage());
         }
         return resp;
+    }
+    private VenueDTO convertToDTO(Venues venues) {
+        VenueDTO dto = new VenueDTO();
+        dto.setVenue_id(venues.getVenue_id());
+        dto.setVenue_name(venues.getVenue_name());
+        dto.setAddress(venues.getAddress());
+        dto.setCapacity(venues.getCapacity());
+        dto.setFacilities(venues.getFacilities());
+        // Add other fields if necessary
+        return dto;
     }
 }

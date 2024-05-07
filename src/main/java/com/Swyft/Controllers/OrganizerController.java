@@ -44,4 +44,9 @@ public class OrganizerController  {
     public ResponseEntity<OrganizerDTO> deleteOrganizer(@PathVariable int organizerId) {
         return ResponseEntity.ok(organizerService.deleteOrganizer(organizerId)); //NAME OF HTML FILE TO BE RETURNED HERE
     }
+    @GetMapping("/get")
+    public ResponseEntity<List<OrganizerDTO>> getAllOrganizers() {
+        List<OrganizerDTO> organizers = organizerService.findAllOrganizers();
+        return ResponseEntity.ok(organizers);
+    }
 }

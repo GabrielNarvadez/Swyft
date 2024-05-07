@@ -1,6 +1,7 @@
 package com.Swyft.Controllers;
 
 import com.Swyft.DTO.EventsDTO;
+import com.Swyft.DTO.OrganizerDTO;
 import com.Swyft.DTO.RequestDTO;
 import com.Swyft.Entity.Venues;
 import com.Swyft.DTO.VenueDTO;
@@ -39,5 +40,10 @@ public class VenueController {
     @DeleteMapping("/delete/id={venueId}")
     public ResponseEntity<VenueDTO> deleteVenue(@PathVariable int venueId) {
         return ResponseEntity.ok(venueService.deleteVenue(venueId)); //NAME OF HTML FILE TO BE RETURNED HERE
+    }
+    @GetMapping("/get")
+    public ResponseEntity<List<VenueDTO>> getAllVenues() {
+        List<VenueDTO> venues = venueService.findAllVenues();
+        return ResponseEntity.ok(venues);
     }
 }

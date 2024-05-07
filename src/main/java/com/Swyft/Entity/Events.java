@@ -1,6 +1,8 @@
 package com.Swyft.Entity;
 
+
 import jakarta.persistence.*;
+import java.time.*;
 
 @Entity
 @Table(name = "Events")
@@ -8,12 +10,15 @@ public class Events {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int event_id;
+
     private String event_title;
-    private String date;
+    private Integer date;
     private String details;
     private String location;
-    private int event_venue_id;
+    private Integer event_venue_id;
     private Integer attendee_count;
+    private LocalDate date_posted;
+    private Integer days_ago;
 
     // Getters and setters
     public int getEvent_id() {
@@ -56,11 +61,27 @@ public class Events {
         this.attendee_count = attendee_count;
     }
 
-    public void setDate(String date) { this.date = date;
-    }
-
-    public String getDate() {
+    public Integer getDate() {
         return date;
     }
 
+    public void setDate(Integer date) {
+        this.date = date;
+    }
+
+    public LocalDate getDate_posted() {
+        return date_posted;
+    }
+
+    public void setDate_posted(LocalDate date_posted) {
+        this.date_posted = date_posted;
+    }
+
+    public Integer getDays_ago() {
+        return days_ago;
+    }
+
+    public void setDays_ago(Integer days_ago) {
+        this.days_ago = days_ago;
+    }
 }

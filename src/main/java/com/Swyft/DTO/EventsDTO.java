@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -16,6 +16,8 @@ public class EventsDTO {
 
     // Fields representing event data
     private Integer event_id; // Added ID field
+    private LocalDate date_posted; //Added DATE field
+    private Integer days_ago;
 
     @NotEmpty(message = "Event title required")
     private String event_title;
@@ -23,7 +25,7 @@ public class EventsDTO {
     @NotEmpty(message = "Event location required")
     private String location;
 
-    private String date;
+    private Integer date;
 
     @NotEmpty(message = "Event details required")
     private String details;
@@ -65,6 +67,22 @@ public class EventsDTO {
 
     public void setAttendee_count(Integer attendee_count) {
         this.attendee_count = attendee_count;
+    }
+
+    public LocalDate getDate_posted() {
+        return date_posted;
+    }
+
+    public void setDate_posted(LocalDate date_posted) {
+        this.date_posted = date_posted;
+    }
+
+    public Integer getDays_ago() {
+        return days_ago;
+    }
+
+    public void setDays_ago(Integer days_ago) {
+        this.days_ago = days_ago;
     }
 
     public void setTitle(String title) {this.event_title = title;
