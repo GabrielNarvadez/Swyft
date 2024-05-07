@@ -83,8 +83,7 @@
     </section>
     <!--==============================
 Contact Area  
-==============================-->
-<div class="space-top">
+==============================--><div class="space-top">
     <form id="registrationForm" action="{% url 'event_details' %}" method="post" class="th-contact-form team-details-form ajax-contact" data-bg-src="../../static/assets/img/bg/feature-bg1.png">
         {% csrf_token %}
         <div class="form-title mb-30 text-center">
@@ -107,10 +106,7 @@ Contact Area
                 <button type="submit" class="th-btn">Send Message <i class="fas fa-arrow-up-right ms-2"></i></button>
             </div>
         </div>
-    </form>
-    
-    
-</div>    {% include 'personal/snippets/footer.html' %}
+        </form>    {% include 'personal/snippets/footer.html' %}
 
 </body>
 
