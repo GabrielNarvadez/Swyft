@@ -11,3 +11,13 @@ class Event(models.Model):
 
     def str(self):
         return self.fullname
+class EventDisplay(models.Model):
+    event_title = models.CharField(max_length=100)
+    date = models.DateField()
+    details = models.TextField()
+    location = models.CharField(max_length=100)
+    event_venue_id = models.IntegerField()
+    attendee_count = models.IntegerField()
+
+    def __str__(self):
+        return self.event_title

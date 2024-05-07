@@ -41,6 +41,9 @@ Project Area
     <!--==============================
 Project Area  
 ==============================-->
+
+
+
     <section class="space">
         <div class="container">
             <div class="text-center">
@@ -51,79 +54,23 @@ Project Area
                 </div>
             </div>
             <div class="row gx-40 gy-40 filter-active">
-                <div class="col-md-6 col-lg-4 cat1 filter-item">
-                    <div class="project-card3 wow fadeInUp">
-                        <div class="project-img">
-                            <img src="../../static/assets/img/project/project_4_1.jpg" alt="project image">
-                        </div>
-                        <a href="project-details" class="icon-btn" tabindex="-1"><i class="far fa-arrow-up-right"></i></a>
-                        <div class="project-content">
-                            <p class="project-card_subtitle">Marketing Agency</p>
-                            <h4 class="box-title"><a href="project-details">Email Marketing</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 cat2 filter-item">
-                    <div class="project-card3 wow fadeInUp">
-                        <div class="project-img">
-                            <img src="../../static/assets/img/project/project_4_2.jpg" alt="project image">
-                        </div>
-                        <a href="project-details" class="icon-btn" tabindex="-1"><i class="far fa-arrow-up-right"></i></a>
-                        <div class="project-content">
-                            <p class="project-card_subtitle">Digital Agency</p>
-                            <h4 class="box-title"><a href="project-details">Digital Marketing</a></h4>
+                {% for event in events_data %}
+                    <div class="col-md-6 col-lg-4 cat1 filter-item">
+                        <div class="project-card3 wow fadeInUp">
+                            <div class="project-img">
+                                <img src="../../static/assets/img/project/project_4_1.jpg" alt="project image">
+                            </div>
+                            <a href="project-details" class="icon-btn" tabindex="-1"><i class="far fa-arrow-up-right"></i></a>
+                            <div class="project-content">
+                                <p class="project-card_subtitle">{{ event.location }}</p>
+                                <h4 class="box-title"><a href="project-details">{{ event.event_title }}</a></h4>
+                                <p>{{ event.details }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 cat1 filter-item">
-                    <div class="project-card3 wow fadeInUp">
-                        <div class="project-img">
-                            <img src="../../static/assets/img/project/project_4_3.jpg" alt="project image">
-                        </div>
-                        <a href="project-details" class="icon-btn" tabindex="-1"><i class="far fa-arrow-up-right"></i></a>
-                        <div class="project-content">
-                            <p class="project-card_subtitle">Marketing Agency</p>
-                            <h4 class="box-title"><a href="project-details">Web Development Agency</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 cat2 cat3 filter-item">
-                    <div class="project-card3 wow fadeInUp">
-                        <div class="project-img">
-                            <img src="../../static/assets/img/project/project_4_7.jpg" alt="project image">
-                        </div>
-                        <a href="project-details" class="icon-btn" tabindex="-1"><i class="far fa-arrow-up-right"></i></a>
-                        <div class="project-content">
-                            <p class="project-card_subtitle">Digital Agency</p>
-                            <h4 class="box-title"><a href="project-details">Market Research Agency</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 cat3 cat4 filter-item">
-                    <div class="project-card3 wow fadeInUp">
-                        <div class="project-img">
-                            <img src="../../static/assets/img/project/project_4_8.jpg" alt="project image">
-                        </div>
-                        <a href="project-details" class="icon-btn" tabindex="-1"><i class="far fa-arrow-up-right"></i></a>
-                        <div class="project-content">
-                            <p class="project-card_subtitle">Creative Agency</p>
-                            <h4 class="box-title"><a href="project-details">Media Buying Agency</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 cat4 filter-item">
-                    <div class="project-card3 wow fadeInUp">
-                        <div class="project-img">
-                            <img src="../../static/assets/img/project/project_4_9.jpg" alt="project image">
-                        </div>
-                        <a href="project-details" class="icon-btn" tabindex="-1"><i class="far fa-arrow-up-right"></i></a>
-                        <div class="project-content">
-                            <p class="project-card_subtitle">Marketing Agency</p>
-                            <h4 class="box-title"><a href="project-details">Public Relations Agency</a></h4>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
+            
         </div>
     </section>    {% include 'personal/snippets/footer.html' %}
 

@@ -11,6 +11,9 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.shortcuts import render
+from rest_framework import generics
+from .models import Event
+from .serializers import EventDisplay
 
 # Create your views here.
 def home_screen_view(request):
@@ -23,8 +26,23 @@ def about(request):
 def contact(request):
     return render(request, 'contact.html')
 
+
 def events(request):
-    return render(request, 'events.html')
+    # Make a GET request to the REST API endpoint
+    api_url = 'http://localhost:8080/api/event/get'
+    response = requests.get(api_url)
+    
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        events_data = response.json()
+        
+        # Pass the data to the template
+        return render(request, 'events.html', {'events_data': events_data})
+    else:
+        # If the request was not successful, handle the error
+        error_message = f"Failed to fetch events from API: {response.status_code}"
+        return render(request, 'error.html', {'error_message': error_message})
+
 
 @csrf_exempt
 def event_details(request):
@@ -36,7 +54,8 @@ def event_details(request):
         user_message = request.POST.get('user_message')
 
         # Prepare the data to send to the Spring Boot endpoint
-        url = "http://localhost:8080/api/attendees/create"  # Adjusted endpoint URL
+        url = "http://localhost:8080/api/attendees/create" 
+        # Adjusted endpoint URL
         headers = {'Content-Type': 'application/json'}  # Set content type to JSON
 
         # Convert form data to JSON
