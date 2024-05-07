@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/event")
 public class EventsControllers {
 
     private final EventsService eventsService;
@@ -25,36 +26,36 @@ public class EventsControllers {
         this.storageService = storageService;
     }
 
-    @PostMapping("event/create")
+    @PostMapping("/create")
     public ResponseEntity<EventsDTO> createEvent(@RequestBody EventsDTO create){
         return ResponseEntity.ok(eventsService.createEvent(create));
     }
 
-    @PutMapping("event/update/{eventId}")
+    @PutMapping("/update/{eventId}")
     public ResponseEntity<EventsDTO> updateEvent(@PathVariable int eventId, @RequestBody EventsDTO update) {
-        update.setId(eventId);
+        update.setEventId(eventId);
         return ResponseEntity.ok(eventsService.updateEvent(update));
     }
 
-    @DeleteMapping("event/delete/{eventId}")
+    @DeleteMapping("/delete/{eventId}")
     public ResponseEntity<EventsDTO> deleteEvent(@PathVariable int eventId) {
         return ResponseEntity.ok(eventsService.deleteEvent(eventId));
     }
 
-    @GetMapping("/event/get")
+    @GetMapping("/get")
     public ResponseEntity<List<EventsDTO>> getAllEvents() {
         List<EventsDTO> events = eventsService.findAllEvents();
         return ResponseEntity.ok(events);
     }
 
-    @PostMapping("/event/fileSystem")
+    @PostMapping("/fileSystem")
     public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("image") MultipartFile file) throws IOException {
         String uploadImage = storageService.uploadImageToFileSystem(file);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(uploadImage);
     }
 
-    @GetMapping("/event/fileSystem/Images/{fileName}")
+    @GetMapping("/fileSystem/Images/{fileName}")
     public ResponseEntity<?> downloadImageFromFileSystem(@PathVariable String fileName) throws IOException {
         byte[] imageData = storageService.downloadImageFromFileSystem(fileName);
         return ResponseEntity.status(HttpStatus.OK)

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @Controller
+@RequestMapping("/api/venue")
 public class VenueController {
 
     private final VenueService venueService;
@@ -26,16 +27,16 @@ public class VenueController {
         this.venueService = venueService;
     }
 
-    @PostMapping("venue/create")
+    @PostMapping("/create")
     public ResponseEntity<VenueDTO> createVenue(@RequestBody VenueDTO create){
         return ResponseEntity.ok(venueService.createVenue(create)); //NAME OF HTML FILE TO BE RETURNED HERE
     }
-    @PutMapping("venue/update/id={venueId}")
+    @PutMapping("/update/id={venueId}")
     public ResponseEntity<VenueDTO> updateVenue(@PathVariable int venueId, @Valid @RequestBody VenueDTO update) {
         update.setVenue_id(venueId);
         return ResponseEntity.ok(venueService.updateVenue(update)); //NAME OF HTML FILE TO BE RETURNED HERE
     }
-    @DeleteMapping("venue/delete/id={venueId}")
+    @DeleteMapping("/delete/id={venueId}")
     public ResponseEntity<VenueDTO> deleteVenue(@PathVariable int venueId) {
         return ResponseEntity.ok(venueService.deleteVenue(venueId)); //NAME OF HTML FILE TO BE RETURNED HERE
     }

@@ -1,10 +1,13 @@
 package com.Swyft.DTO;
 
 import com.Swyft.Entity.Events;
+import com.Swyft.Entity.OurUsers;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -39,11 +42,11 @@ public class EventsDTO {
     }
 
     // Getter and Setter for ID
-    public Integer getId() {
+    public Integer getEvent_Id() {
         return event_id;
     }
 
-    public void setId(Integer id) {
+    public void setEventId(Integer event_id) {
         this.event_id = event_id;
     }
 
@@ -66,5 +69,6 @@ public class EventsDTO {
 
     public void setTitle(String title) {this.event_title = title;
     }
+    private List<Events> EventsList;
 
 }

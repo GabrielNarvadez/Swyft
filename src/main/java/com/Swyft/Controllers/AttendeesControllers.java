@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/attendees") // Adjusted base mapping
 public class AttendeesControllers {
+
     private final AttendeesService attendeesService;
 
     @Autowired
@@ -15,13 +17,13 @@ public class AttendeesControllers {
         this.attendeesService = attendeesService;
     }
 
-    @PostMapping("/attendees/create/{eventId}")
+    @PostMapping("/create/{eventId}")
     public ResponseEntity<AttendeesDTO> createAttendees(@RequestBody AttendeesDTO create, @PathVariable int eventId) {
         AttendeesDTO result = attendeesService.createAttendees(create, eventId);
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping("/attendees/delete/{attendeesId}/{eventId}")
+    @DeleteMapping("/delete/{attendeesId}/{eventId}")
     public ResponseEntity<AttendeesDTO> deleteAttendees(@PathVariable Integer attendeesId, @PathVariable Integer eventId) {
         AttendeesDTO result = attendeesService.deleteAttendees(attendeesId, eventId);
         return ResponseEntity.ok(result);

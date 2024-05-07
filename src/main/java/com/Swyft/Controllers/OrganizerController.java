@@ -8,6 +8,7 @@ import com.Swyft.DTO.OrganizerDTO;
 import com.Swyft.Repositories.OrganizerRepository;
 import com.Swyft.Services.OrganizerService;
 import jakarta.validation.Valid;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @Controller
+@RequestMapping("/api/organizer")
 public class OrganizerController  {
 
     private final OrganizerService organizerService;
@@ -28,14 +30,18 @@ public class OrganizerController  {
         this.organizerService = organizerService; //NAME OF HTML FILE TO BE RETURNED HERE
     }
 
-    @PostMapping("organizer/create")
+    @PostMapping("/create")
     public  ResponseEntity<OrganizerDTO> createOrganizer(@RequestBody OrganizerDTO create) {
         return ResponseEntity.ok(organizerService.createOrganizer(create)); //NAME OF HTML FILE TO BE RETURNED HERE
     }
 
-    @PutMapping("organizer/id={organizerId}")
+    @PutMapping("/update/id={organizerId}")
     public ResponseEntity<OrganizerDTO> updateOrganizer(@PathVariable int organizerId, @Valid @RequestBody OrganizerDTO update) {
         update.setOrganizer_id(organizerId);
         return ResponseEntity.ok(organizerService.updateOrganizer(update)); //NAME OF HTML FILE TO BE RETURNED HERE
+    }
+    @DeleteMapping("/delete/id={organizerId}")
+    public ResponseEntity<OrganizerDTO> deleteOrganizer(@PathVariable int organizerId) {
+        return ResponseEntity.ok(organizerService.deleteOrganizer(organizerId)); //NAME OF HTML FILE TO BE RETURNED HERE
     }
 }

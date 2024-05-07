@@ -1,28 +1,27 @@
 package com.Swyft.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Events")
 public class Events {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int event_id;
     private String event_title;
     private String date;
     private String details;
     private String location;
+    private int event_venue_id;
     private Integer attendee_count;
 
     // Getters and setters
-    public int getId() {
-        return id;
+    public int getEvent_id() {
+        return event_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int event_id) {
+        this.event_id = this.event_id;
     }
 
     public String getTitle() {
@@ -63,4 +62,5 @@ public class Events {
     public String getDate() {
         return date;
     }
+
 }

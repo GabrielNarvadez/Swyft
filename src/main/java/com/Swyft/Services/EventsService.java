@@ -1,5 +1,7 @@
 package com.Swyft.Services;
 
+import com.Swyft.DTO.AttendeesDTO;
+import com.Swyft.DTO.VenueDTO;
 import com.Swyft.Entity.Events;
 import com.Swyft.DTO.EventsDTO;
 import com.Swyft.Repositories.EventsRepository;
@@ -43,7 +45,7 @@ public class EventsService {
     public EventsDTO updateEvent(EventsDTO eventRequest) {
         EventsDTO resp = new EventsDTO();
         try {
-            Optional<Events> optionalEvents = eventsRepository.findById(eventRequest.getId());
+            Optional<Events> optionalEvents = eventsRepository.findById(eventRequest.getEvent_Id());
             if (optionalEvents.isPresent()) {
                 Events events = optionalEvents.get();
 
@@ -87,11 +89,13 @@ public class EventsService {
 
     private EventsDTO convertToDTO(Events event) {
         EventsDTO dto = new EventsDTO();
-        dto.setId(event.getId());
+        VenueDTO venueDTO = new VenueDTO();
+        dto.setEvent_id(event.getEvent_id());
         dto.setTitle(event.getTitle());
         dto.setDate(event.getDate());
         dto.setDetails(event.getDetails());
         dto.setLocation(event.getLocation());
+        venueDTO.setVenue_id(venueDTO.getVenue_id());
         // Add other fields if necessary
         return dto;
     }
