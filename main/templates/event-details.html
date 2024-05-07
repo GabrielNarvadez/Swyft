@@ -83,7 +83,8 @@
     </section>
     <!--==============================
 Contact Area  
-==============================--><div class="space-top">
+==============================-->
+<div class="space-top">
     <form id="registrationForm" action="{% url 'event_details' %}" method="post" class="th-contact-form team-details-form ajax-contact" data-bg-src="../../static/assets/img/bg/feature-bg1.png">
         {% csrf_token %}
         <div class="form-title mb-30 text-center">
@@ -94,7 +95,7 @@ Contact Area
                 <input type="text" name="fullname" placeholder="Full Name" class="form-control style2">
             </div>
             <div class="col-lg-4 form-group">
-                <input type="email" name="email" placeholder="Email Address" class="form-control style2">
+                <input type="text" name="contact_info" placeholder="Email Address" class="form-control style2">
             </div>
             <div class="col-lg-4 form-group">
                 <input type="tel" name="phone" placeholder="Phone :" class="form-control style2">

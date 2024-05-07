@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>    {% include 'personal/snippets/header.html' %}
+
+</head>
+
+<body class="dark-theme" data-bg-src="../../static/assets/img/bg/dark-bg.png">
+
+    <!--[if lte IE 9]>
+    	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+
+
+    <!--********************************
+   		Code Start From Here 
+	******************************** -->
+
+
+
+    {% include 'personal/snippets/nav.html' %}
+
+    <!--==============================
+    Breadcumb
+============================== -->
+    <div class="breadcumb-wrapper " data-bg-src="../../static/assets/img/bg/breadcumb-bg.jpg" data-overlay="black" data-opacity="8">
+        <div class="container">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title">View Organizers and their Events</h1>
+                <ul class="breadcumb-menu">
+                    <li><a href="/">Home</a></li>
+                    <li>Events</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--==============================
+Project Area  
+==============================-->
+    <!--==============================
+View Area  
+==============================-->
+    <section class="space">
+        <div class="container">
+            <div class="row gx-40 gy-40 filter-active">
+                {% for organizer in organizer_data %}
+                    <div class="col-md-6 col-lg-4 cat1 filter-item">
+                        <div class="project-card3 wow fadeInUp">
+                            <div class="project-img">
+                                <img src="../../static/assets/img/project/project_4_1.jpg" alt="project image">
+                            </div>
+                            <a href="event-details" class="icon-btn" tabindex="-1"><i class="far fa-arrow-up-right"></i></a>
+                            <div class="project-content">
+                                <p class="project-card_subtitle">{{ organizer.organizer_name }}</p>
+                                <h3 class="box-title"><a href="project-details">{{ organizer.contact_info }}</a></h3>
+                                <p>{{ organizer.events_organized }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    
+        </div>
+    </section>
+    {% include 'personal/snippets/footer.html' %}
+
+</body>
+
+</html>

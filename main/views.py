@@ -6,7 +6,9 @@ from django.http import JsonResponse, HttpResponse
 import requests
 from django.http import JsonResponse
 from .models import Event
+from .models import Organizer
 from .serializers import EventSerializer
+from .serializers import OrganizerSerializer
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -18,6 +20,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponseBadRequest
 from .services.event_service import EventService
 
+from django.http import JsonResponse
 
 # Create your views here.
 def home_screen_view(request):
@@ -110,8 +113,46 @@ def attendance(request, attendees_id):
     else:
         return HttpResponseBadRequest('Method not allowed')
 
-def event_view(request):
-    service = EventService()
-    service.process_data(request.GET.get('event_data', {}))
-    service.execute_action()
-    return HttpResponse("Event processed successfully")
+@csrf_exempt
+def organizers(request):
+    if request.method == 'POST':
+        # Extract form data from the request
+        organizer_name = request.POST.get('organizer_name')
+        contact_info = request.POST.get('contact_info')
+        events_organized = request.POST.get('events_organized')
+
+        # Prepare the data to send to the Spring Boot endpoint
+        url = "http://localhost:8080/api/organizer/create"  # Adjusted endpoint URL
+        headers = {'Content-Type': 'application/json'}  # Set content type to JSON
+
+        # Convert form data to JSON
+        data = json.dumps({
+            'organizer_name': organizer_name,
+            'contact_info': contact_info,
+            'events_organized': events_organized,
+        })
+
+        # Send the JSON data to the Spring Boot endpoint
+        response = requests.post(url, data=data, headers=headers)
+
+        #Return the response from the endpoint you posted to
+        return render(request, 'organizers.html')
+    
+    elif request.method == 'GET':
+        return render(request, 'organizers.html')
+    
+        
+def organizerView(request):
+    api_url = 'http://localhost:8080/api/organizer/get'
+    get_response = requests.get(api_url)
+
+    if get_response.status_code == 200:
+        organizer_data = get_response.json()
+        return render(request, 'organizerView.html', {'organizer_data': organizer_data})
+    
+    else:
+        # If the request was not successful, handle the error
+        error_message = f"Failed to fetch events from API: {get_response.status_code}"
+        return render(request, 'error.html', {'error_message': error_message})
+
+
