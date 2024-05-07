@@ -16,6 +16,7 @@ from .models import Event
 from .serializers import EventDisplay
 from django.shortcuts import redirect
 from django.http import HttpResponseBadRequest
+from .services.event_service import EventService
 
 
 # Create your views here.
@@ -108,3 +109,9 @@ def attendance(request, attendees_id):
             return HttpResponseBadRequest('Failed to send PUT request')
     else:
         return HttpResponseBadRequest('Method not allowed')
+
+def event_view(request):
+    service = EventService()
+    service.process_data(request.GET.get('event_data', {}))
+    service.execute_action()
+    return HttpResponse("Event processed successfully")
