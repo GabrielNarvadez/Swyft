@@ -48,7 +48,7 @@ def events(request):
     else:
         # If the request was not successful, handle the error
         error_message = f"Failed to fetch events from API: {response.status_code}"
-        return render(request, 'error.html', {'error_message': error_message})  
+        return render(request, 'events.html', {'error_message': error_message})  
 
 
 @csrf_exempt
